@@ -1,3 +1,113 @@
 .hero-media {
-  background: linear-gradient(#0c78a80d, #083b662e), url("hero-lisboa.png") 50% / cover no-repeat;
+  background: #083b66;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hero-slideshow,
+.hero-shade {
+  inset: 0;
+  position: absolute;
+}
+
+.hero-slideshow {
+  z-index: 0;
+}
+
+.hero-slide {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  inset: 0;
+  opacity: 0;
+  position: absolute;
+  transform: scale(1.035);
+  animation: destination-flash 8s steps(1, end) infinite;
+}
+
+.hero-slide-lisboa {
+  background-image: url("https://images.unsplash.com/photo-1753284679118-2ba6c37ee55d?auto=format&fit=crop&w=1920&q=85");
+  animation-delay: 0s;
+}
+
+.hero-slide-madrid {
+  background-image: url("https://images.unsplash.com/photo-1570698473651-b2de99bae12f?auto=format&fit=crop&w=1920&q=85");
+  animation-delay: -2s;
+}
+
+.hero-slide-disney {
+  background-image: url("https://images.unsplash.com/photo-1741175226918-81c6b6d1ab61?auto=format&fit=crop&w=1920&q=85");
+  animation-delay: -4s;
+}
+
+.hero-slide-paris {
+  background-image: url("https://images.unsplash.com/photo-1630631038935-faa8d43e2f91?auto=format&fit=crop&w=1920&q=85");
+  animation-delay: -6s;
+}
+
+.hero-shade {
+  background: linear-gradient(135deg, rgb(8 59 102 / 38%), rgb(8 59 102 / 8%) 55%, rgb(16 43 58 / 45%));
+  z-index: 1;
+}
+
+.hero-stamp,
+.hero-destinations {
+  z-index: 2;
+}
+
+.hero-destinations {
+  bottom: 36px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  left: 36px;
+  position: absolute;
+}
+
+.hero-destinations span {
+  backdrop-filter: blur(8px);
+  background: rgb(255 249 241 / 82%);
+  border: 1px solid rgb(255 255 255 / 65%);
+  border-radius: 999px;
+  color: var(--navy);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .02em;
+  padding: 8px 11px;
+}
+
+@keyframes destination-flash {
+  0%, 24.9% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  25%, 100% {
+    opacity: 0;
+    transform: scale(1.035);
+  }
+}
+
+@media (width <= 700px) {
+  .hero-destinations {
+    bottom: 24px;
+    left: 20px;
+    right: 20px;
+  }
+
+  .hero-destinations span {
+    font-size: 10px;
+    padding: 7px 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide {
+    animation: none;
+  }
+
+  .hero-slide-lisboa {
+    opacity: 1;
+    transform: none;
+  }
 }
